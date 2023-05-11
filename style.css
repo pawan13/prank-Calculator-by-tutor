@@ -95,3 +95,20 @@ body{
 {grid-area:dot}
 .btn-equals{grid-area:equals
     }
+
+    .prank{
+        animation: shake 5s 2 alternate
+    }
+    @keyframes shake {
+       0%{
+        transform: translateX(10px);
+       } 
+       50%{
+        transform: translateX(-10px);
+       }  80%{
+        transform: translateX(10px);
+       } 
+       0%{
+        transform: translateX(10px);
+       } 
+    }

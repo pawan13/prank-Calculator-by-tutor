@@ -13,7 +13,9 @@ btns.forEach((btn, index)=>{
 /// attach the click event listenser
 btn.addEventListener("click", ()=>{
   const val = btn.innerHTML
-
+   displayElms.style.background =""
+   displayElms.style.color = "black"
+   displayElms.classList.remove("prank")
   if(operators.includes(val) && !strToDisplay.length) return
  
   if(operators.includes(val)){
@@ -34,7 +36,6 @@ btn.addEventListener("click", ()=>{
   }
 
   if (val === "="){
-    lastOperator = val
     const lastChar = strToDisplay.slice(-1)
      if(operators.includes(lastChar)){
         strToDisplay = strToDisplay.slice(0, -1)
@@ -60,6 +61,19 @@ const display = (str) => {
 }
 
 const total = () =>{
-    const ttl = eval(strToDisplay)
+    const pk = randomNumber()
+
+    if(pk){
+        displayElms.style.background = "red"
+        displayElms.style.color="white"
+        displayElms.classList.add("prank")
+    }
+    const ttl = eval(strToDisplay) + pk
     display(ttl)
+    strToDisplay = ttl.toString()
+}
+
+const randomNumber = () =>{
+    const num = Math.round(Math.random() * 10)
+    return num <= 3 ? num : 0;
 }
